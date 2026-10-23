@@ -25,9 +25,9 @@
       <nav class="nav-links" id="nav">
         <a href="#produto">Produto</a>
         <a href="#fluxo">Como funciona</a>
-        <a href="#info">Informações</a>
         <a href="/support/">Suporte</a>
         <a href="/privacy/">Privacidade</a>
+        <a href="/terms/">Termos</a>
       </nav>
       <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     </div>
@@ -41,8 +41,8 @@
         <h1>Sua fila.<br><span class="grad">No seu ritmo.</span></h1>
         <p class="lead">O ReelFlow transforma lotes de vídeos curtos em uma rotina simples: conecte o canal, organize os títulos e deixe cada publicação entrar no horário certo.</p>
         <div class="cta">
-          <a class="btn" href="#info">Ver informações do app</a>
-          <a class="btn ghost" href="/privacy/">Política de privacidade</a>
+          <a class="btn" href="#produto">Conhecer o produto</a>
+          <a class="btn ghost" href="/support/">Suporte</a>
         </div>
         <div class="chips">
           <span class="chip">API oficial do YouTube</span>
@@ -62,7 +62,7 @@
               <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#9156eb"/><path d="M14.4 11.2V28.8L28.8 20Z" fill="#fff"/></svg>
               REELFLOW
             </div>
-            <div><span class="pill green">PRONTO</span><span class="days">· 42 dias restantes</span></div>
+            <div class="right"><span class="pill green">PRONTO</span><span class="days">· 42 dias restantes</span></div>
           </div>
 
           <div class="win-body">
@@ -124,7 +124,7 @@
                 <button class="btn disabled">Pausar</button>
                 <button class="btn disabled">Esquecer postados</button>
               </div>
-              <div class="logbox" data-type="[10:02:14] 4 vídeo(s) encontrado(s): 3 novo(s), 1 já postado(s).">[10:02:14] 4 vídeo(s) encontrado(s): 3 novo(s), 1 já postado(s).</div>
+              <div class="logbox" data-type="[10:02] 4 vídeo(s): 3 novo(s), 1 já postado(s).">[10:02] 4 vídeo(s): 3 novo(s), 1 já postado(s).</div>
             </div>
           </div>
         </div>
@@ -211,52 +211,28 @@
       </div>
     </section>
 
-    <!-- INFORMAÇÕES DO APLICATIVO (configuração do Google) -->
-    <section id="info" class="info">
+    <!-- DOCUMENTOS LEGAIS -->
+    <section id="legal">
       <div class="wrap">
         <div class="reveal">
-          <div class="kicker">Google Auth Platform</div>
-          <h2>Informações do aplicativo</h2>
-          <p class="section-lead">Use estes dados na tela de consentimento do OAuth. Eles são exibidos aos clientes quando o Google pede a autorização.</p>
+          <div class="kicker">Documentos legais</div>
+          <h2>Claros desde o início.</h2>
+          <p class="section-lead">Antes de usar o ReelFlow, leia como tratamos seus dados e quais são as regras de uso.</p>
         </div>
-
-        <div class="info-grid">
-          <article class="info-card reveal">
-            <div class="label">Nome do aplicativo</div>
-            <div class="value">ReelFlow</div>
-            <p class="note">É o nome que aparece para os clientes na tela do Google.</p>
-            <button class="btn copy-btn" data-copy="ReelFlow">Copiar</button>
-          </article>
-
-          <article class="info-card reveal" data-delay="1">
-            <div class="label">E-mail de suporte</div>
-            <div class="value">lojapalaceshop.store@gmail.com</div>
-            <p class="note">Um e-mail que você realmente acessa. O Google envia mensagens sobre o app para ele.</p>
-            <button class="btn copy-btn" data-copy="lojapalaceshop.store@gmail.com">Copiar</button>
-          </article>
-
-          <article class="info-card reveal">
-            <div class="label">Página inicial</div>
-            <div class="value">https://reelflow.com/</div>
-            <p class="note">Esta página. Precisa estar em um domínio que você controla e verificado no Google Search Console.</p>
-            <button class="btn copy-btn" data-copy="https://reelflow.com/">Copiar</button>
-          </article>
-
-          <article class="info-card reveal" data-delay="1">
-            <div class="label">Política de privacidade</div>
-            <div class="value">https://reelflow.com/privacy/</div>
-            <p class="note">Página pública separada, que explica como os dados do YouTube são usados.</p>
-            <button class="btn copy-btn" data-copy="https://reelflow.com/privacy/">Copiar</button>
-          </article>
+        <div class="grid-2">
+          <a class="card reveal" href="/privacy/" data-tilt="5">
+            <div class="glow" aria-hidden="true"></div>
+            <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <h3>Política de Privacidade</h3>
+            <p>O que o programa guarda no seu computador, o que é enviado pela internet e como revogar o acesso ao seu canal.</p>
+          </a>
+          <a class="card reveal" href="/terms/" data-delay="1" data-tilt="5">
+            <div class="glow" aria-hidden="true"></div>
+            <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+            <h3>Termos de Serviço</h3>
+            <p>As regras de uso, as condições da licença, as responsabilidades com o seu conteúdo e os limites do serviço.</p>
+          </a>
         </div>
-
-        <article class="info-card scopes reveal">
-          <div class="label">Escopos solicitados</div>
-          <ul>
-            <li><span><b>youtube.upload</b>: enviar os vídeos escolhidos ao canal, como privados e agendados.</span></li>
-            <li><span><b>youtube.readonly</b>: ler o nome e a foto do canal para exibir a conta conectada.</span></li>
-          </ul>
-        </article>
       </div>
     </section>
   </main>
@@ -267,6 +243,7 @@
       <nav>
         <a href="/support/">Suporte</a>
         <a href="/privacy/">Privacidade</a>
+        <a href="/terms/">Termos</a>
         <a href="mailto:lojapalaceshop.store@gmail.com">Contato</a>
       </nav>
     </div>

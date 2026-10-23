@@ -58,7 +58,7 @@
   }
 
   // Inclinação 3D: a janela do app e os cartões acompanham o mouse
-  if (!reduce && window.matchMedia("(pointer: fine)").matches) {
+  if (!reduce && window.matchMedia("(hover: hover)").matches) {
     document.querySelectorAll("[data-tilt]").forEach((el) => {
       const max = Number(el.dataset.tilt) || 8;
       el.addEventListener("pointermove", (e) => {
@@ -69,7 +69,8 @@
         el.style.setProperty("--gx", `${x * 100}%`);
         el.style.setProperty("--gy", `${y * 100}%`);
       });
-      el.addEventListener("pointerleave", () => { el.style.transform = ""; });
+      el.addEventListener("pointerenter", () => el.classList.add("tilting"));
+      el.addEventListener("pointerleave", () => { el.style.transform = ""; el.classList.remove("tilting"); });
     });
   }
 
