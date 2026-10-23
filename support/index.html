@@ -1,25 +1,121 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Suporte, configuração OAuth e perguntas frequentes do ReelFlow.">
-  <meta name="theme-color" content="#0a0712"><title>ReelFlow — Suporte</title><link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReelFlow — Suporte</title>
+  <meta name="description" content="Como configurar o Google Cloud e o OAuth para o ReelFlow, e soluções para os erros mais comuns.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
-  <div class="ambient" aria-hidden="true"><canvas id="particle-field"></canvas><span class="orb one"></span><span class="orb two"></span><span class="orb three"></span></div><div class="cursor-glow" aria-hidden="true"></div>
-  <header class="site-header"><nav class="nav container" aria-label="Navegação principal"><a class="brand" href="/" aria-label="ReelFlow início"><span class="brand-mark" aria-hidden="true"></span><span>ReelFlow<small>creator control room</small></span></a><div class="nav-links"><a href="/">Produto</a><a class="active" href="/support">Suporte</a><a href="/privacy">Privacidade</a></div><div class="nav-actions"><a class="button small primary" href="mailto:suporte@reelflow.app">Falar com suporte <span aria-hidden="true">↗</span></a><button class="mobile-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button></div></nav></header>
-  <main>
-    <section class="page-hero container reveal"><span class="eyebrow">Central de suporte</span><h1>Conecte o canal.<br><span class="gradient-text">Organize o próximo lote.</span></h1><p>Um guia curto para configurar o Google Cloud, preparar o OAuth e começar a usar o ReelFlow sem surpresas.</p></section>
-    <section class="section compact container" id="oauth"><div class="section-head reveal"><div><span class="section-label">Google Auth Platform</span><h2>Informações do aplicativo.</h2></div><p>Use os valores abaixo para preencher o branding e a tela de consentimento. Troque os placeholders pelos dados reais do responsável antes de publicar.</p></div>
-      <div class="bento"><article class="card reveal"><span class="icon-box">◆</span><h3>Nome do aplicativo</h3><p><strong style="color:var(--text)">ReelFlow</strong><br>É o nome exibido na tela de consentimento do Google.</p></article><article class="card reveal" data-delay="1"><span class="icon-box">@</span><h3>E-mail de suporte</h3><p><strong style="color:var(--text)">suporte@reelflow.app</strong><br>Substitua pelo e-mail que você realmente atende.</p></article><article class="card reveal" data-delay="2"><span class="icon-box">↗</span><h3>Página inicial</h3><p><strong style="color:var(--text)">https://seu-dominio.com/</strong><br>Hospede esta homepage em um domínio seu.</p></article><article class="card reveal" data-delay="1"><span class="icon-box">§</span><h3>Política de privacidade</h3><p><strong style="color:var(--text)">https://seu-dominio.com/privacy</strong><br>Esta é a página pública que explica o uso dos dados.</p></article><article class="card reveal" data-delay="2"><span class="icon-box">⌁</span><h3>Suporte</h3><p><strong style="color:var(--text)">https://seu-dominio.com/support</strong><br>Uma página de ajuda aumenta a confiança do usuário.</p></article></div>
-    </section>
+  <canvas id="particles" aria-hidden="true"></canvas>
 
-    <section class="section compact container"><div class="workflow"><div class="workflow-copy reveal"><span class="section-label">Primeira configuração</span><h2>Do projeto ao consentimento.</h2><p>O aplicativo desktop usa OAuth para que cada cliente autorize a própria conta, sem compartilhar senha com o ReelFlow.</p></div><div class="steps"><article class="step reveal"><span class="step-num">01</span><div><h3>Crie o projeto</h3><p>No Google Cloud Console, crie ou selecione um projeto, ative a YouTube Data API v3 e crie um cliente OAuth para aplicativo desktop.</p></div></article><article class="step reveal" data-delay="1"><span class="step-num">02</span><div><h3>Configure o branding</h3><p>Em Google Auth Platform → Branding, informe ReelFlow, seu e-mail de suporte, domínio autorizado, homepage e esta política de privacidade.</p></div></article><article class="step reveal" data-delay="2"><span class="step-num">03</span><div><h3>Publique e verifique</h3><p>Em Audience, use External e publique o app. Para clientes externos, envie os escopos YouTube ao Verification Center quando o Google solicitar.</p></div></article></div></div></section>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="ReelFlow, página inicial">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#9156eb"/><path d="M14.4 11.2V28.8L28.8 20Z" fill="#fff"/></svg>
+        REELFLOW
+      </a>
+      <nav class="nav-links" id="nav">
+        <a href="/#produto">Produto</a>
+        <a href="/#fluxo">Como funciona</a>
+        <a href="/#info">Informações</a>
+        <a href="/support/" aria-current="page">Suporte</a>
+        <a href="/privacy/">Privacidade</a>
+      </nav>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </header>
 
-    <section class="section compact container"><div class="section-head reveal"><div><span class="section-label">Perguntas frequentes</span><h2>Quando algo sair do ritmo.</h2></div></div><div class="faq"><details class="reveal"><summary>O erro 403 access_denied apareceu. O que faço?</summary><p>Enquanto o app estiver em Testing, adicione o e-mail como usuário de teste em Google Auth Platform → Audience. Para distribuir a clientes, publique o app e conclua a verificação exigida.</p></details><details class="reveal" data-delay="1"><summary>Por que o canal não aparece depois do login?</summary><p>A conta autorizada precisa ser proprietária de um canal retornado por <code>channels.list(mine=true)</code>. Verifique se você escolheu a conta correta e se não é apenas administrador de uma Brand Account.</p></details><details class="reveal" data-delay="2"><summary>Onde ficam os dados da autenticação?</summary><p>O ReelFlow salva o token localmente no computador do usuário em <code>youtube_token.json</code>. Ele pode ser removido para revogar a sessão local.</p></details><details class="reveal"><summary>Quais formatos entram na fila?</summary><p>O ReelFlow aceita MP4, WebM, MKV, MOV, AVI, WMV, FLV, MPEG, M4V e outros formatos comuns de vídeo.</p></details></div></section>
+  <main class="wrap">
+    <div class="doc-hero reveal">
+      <span class="eyebrow">Central de suporte</span>
+      <h1>Conecte o canal.<br>Organize o próximo lote.</h1>
+      <p class="section-lead">Um guia curto para configurar o Google Cloud, preparar o OAuth e começar a usar o ReelFlow sem surpresas.</p>
+    </div>
 
-    <section class="section compact container"><div class="contact-card reveal"><div><h2>Precisa de ajuda com seu projeto?</h2><p>Troque o e-mail abaixo pelo contato real antes de publicar o app no Google.</p></div><a class="button primary" href="mailto:suporte@reelflow.app">suporte@reelflow.app <span aria-hidden="true">↗</span></a></div></section>
+    <div class="doc">
+      <article class="block reveal">
+        <h2><span class="n">1.</span>Configuração do Google Cloud</h2>
+        <p>Estes passos são feitos uma vez pelo responsável pelo aplicativo, no <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>.</p>
+        <ul>
+          <li><strong>Crie ou selecione um projeto</strong> e ative a <strong>YouTube Data API v3</strong>.</li>
+          <li><strong>Crie um cliente OAuth do tipo “Aplicativo para computador”</strong>. Outros tipos, como “Aplicativo da Web”, não funcionam com o ReelFlow.</li>
+          <li><strong>Baixe o JSON</strong> e coloque-o ao lado do programa com o nome <code>client_secret.json</code>, ou use a versão embutida no executável.</li>
+          <li><strong>Preencha o branding</strong> em Google Auth Platform → Branding: nome <strong>ReelFlow</strong>, e-mail de suporte, página inicial e política de privacidade, usando os endereços da página inicial deste site.</li>
+          <li><strong>Defina a audiência</strong> como <strong>External</strong>. Enquanto o app estiver em “Testing”, adicione os e-mails que vão usar o programa em “Usuários de teste”.</li>
+        </ul>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">2.</span>Como conectar</h2>
+        <ul>
+          <li>Abra o ReelFlow e clique em <strong>Conectar YouTube</strong>.</li>
+          <li>Entre com a conta Google que é <strong>dona</strong> do canal e aceite os dois escopos (envio de vídeos e leitura do canal).</li>
+          <li>Se o canal não aparecer, confira a aba <strong>ATIVIDADE</strong>: ela mostra a mensagem exata do erro.</li>
+        </ul>
+      </article>
+
+      <article class="block reveal faq">
+        <h2><span class="n">3.</span>Perguntas frequentes</h2>
+
+        <details>
+          <summary>Apareceu “access_denied” ou erro 403 ao conectar</summary>
+          <p>Com o app em modo “Testing”, só os e-mails cadastrados em “Usuários de teste” conseguem entrar. Adicione a conta em Google Auth Platform → Audience. Para distribuir a outros clientes, publique o app e conclua a verificação exigida pelo Google.</p>
+        </details>
+
+        <details>
+          <summary>Apareceu “redirect_uri_mismatch”</summary>
+          <p>O cliente OAuth foi criado como “Aplicativo da Web”. Crie um novo cliente do tipo “Aplicativo para computador” e use o JSON dele.</p>
+        </details>
+
+        <details>
+          <summary>O programa diz que não encontrou client_secret.json</summary>
+          <p>Quando o arquivo não está ao lado do programa, o ReelFlow usa a cópia embutida no executável. Se nenhuma das duas existir, gere o executável novamente com o arquivo na pasta do projeto, ou coloque o JSON ao lado do programa.</p>
+        </details>
+
+        <details>
+          <summary>O canal não aparece depois do login</summary>
+          <p>A conta autorizada precisa ser <strong>proprietária</strong> de um canal. Contas que apenas administram uma Brand Account podem não ver o canal. Confirme se escolheu a conta correta.</p>
+        </details>
+
+        <details>
+          <summary>Onde ficam os dados do programa?</summary>
+          <p>Em uma pasta oculta, <code>%LOCALAPPDATA%\ReelFlow</code>: o token do YouTube, o histórico de vídeos já postados e a licença. Para desconectar, apague <code>youtube_token.json</code> ou use <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">as permissões da sua Conta Google</a>.</p>
+        </details>
+
+        <details>
+          <summary>Um vídeo foi marcado como “já postado” e preciso enviá-lo de novo</summary>
+          <p>Use o botão <strong>Reenviar</strong> ao lado do vídeo na fila, ou <strong>Esquecer postados</strong> para limpar o histórico. Os dois só funcionam com a fila parada.</p>
+        </details>
+
+        <details>
+          <summary>Quais formatos de vídeo são aceitos?</summary>
+          <p>MP4, M4V, MOV, MKV, WebM, AVI, WMV, FLV, MPEG, MPG, 3GP, TS, M2TS, MTS e OGV.</p>
+        </details>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">4.</span>Ainda precisa de ajuda?</h2>
+        <p>Escreva para <a href="mailto:lojapalaceshop.store@gmail.com">lojapalaceshop.store@gmail.com</a> com a mensagem da aba ATIVIDADE e uma descrição do que você estava fazendo.</p>
+      </article>
+    </div>
   </main>
-  <footer class="footer"><div class="container footer-inner"><div>© <span data-year></span> ReelFlow. Suporte direto, sem labirinto.</div><div class="footer-links"><a href="/">Produto</a><a href="/privacy">Privacidade</a><a href="mailto:suporte@reelflow.app">Contato</a></div></div></footer><script src="/site.js"></script>
+
+  <footer>
+    <div class="wrap">
+      <div>© ReelFlow. Suporte direto, sem labirinto.</div>
+      <nav>
+        <a href="/">Produto</a>
+        <a href="/privacy/">Privacidade</a>
+        <a href="mailto:lojapalaceshop.store@gmail.com">Contato</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="/site.js" defer></script>
 </body>
 </html>

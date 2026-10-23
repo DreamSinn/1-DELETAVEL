@@ -1,27 +1,141 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Política de Privacidade do ReelFlow.">
-  <meta name="theme-color" content="#0a0712"><title>ReelFlow — Política de Privacidade</title><link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReelFlow — Política de Privacidade</title>
+  <meta name="description" content="Como o ReelFlow acessa, usa, armazena e protege os dados da sua conta do Google e do YouTube.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
-  <div class="ambient" aria-hidden="true"><canvas id="particle-field"></canvas><span class="orb one"></span><span class="orb two"></span><span class="orb three"></span></div><div class="cursor-glow" aria-hidden="true"></div>
-  <header class="site-header"><nav class="nav container" aria-label="Navegação principal"><a class="brand" href="/" aria-label="ReelFlow início"><span class="brand-mark" aria-hidden="true"></span><span>ReelFlow<small>creator control room</small></span></a><div class="nav-links"><a href="/">Produto</a><a href="/support">Suporte</a><a class="active" href="/privacy">Privacidade</a></div><div class="nav-actions"><a class="button small primary" href="/">Voltar ao produto <span aria-hidden="true">↗</span></a><button class="mobile-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button></div></nav></header>
-  <main>
-    <section class="page-hero container reveal"><span class="eyebrow">Transparência primeiro</span><h1>Política de <span class="gradient-text">Privacidade.</span></h1><p>Esta política explica como o ReelFlow acessa e trata dados quando você conecta sua conta do YouTube para organizar e agendar vídeos.</p><div class="policy-meta"><span class="meta-chip">Última atualização: 22/10/2026</span><span class="meta-chip">Contato: suporte@reelflow.app</span></div></section>
-    <article class="prose container">
-      <h2>1. Quem somos</h2><p>O ReelFlow é uma ferramenta desktop para organizar filas de vídeos e enviá-los para um canal do YouTube por meio da API oficial do YouTube Data API v3. Nesta política, “ReelFlow”, “nós” e “aplicativo” referem-se à ferramenta e aos seus serviços associados.</p>
-      <h2>2. Dados que o ReelFlow acessa</h2><p>Com sua autorização explícita pelo Google OAuth, o ReelFlow pode acessar:</p><ul><li>dados básicos do canal associado à conta autorizada, como nome e imagem pública do canal;</li><li>permissão para enviar vídeos por meio do escopo <code>youtube.upload</code>;</li><li>permissão de leitura necessária para identificar o canal e exibir seu perfil por meio do escopo <code>youtube.readonly</code>;</li><li>informações locais que você escolhe fornecer, como caminhos de pastas, títulos, descrições, tags e horários de agendamento.</li></ul>
-      <h2>3. Como usamos esses dados</h2><p>Usamos os dados exclusivamente para executar as funções que você solicita no ReelFlow: conectar o canal, exibir o perfil, localizar os vídeos escolhidos, enviar arquivos ao YouTube, definir metadados e acompanhar o progresso da fila.</p><p>O ReelFlow não usa os dados do YouTube para publicidade, venda de informações, criação de perfis de marketing ou treinamento de modelos. Não vendemos nem compartilhamos dados do usuário com terceiros para fins comerciais.</p>
-      <h2>4. Armazenamento e segurança</h2><p>O fluxo OAuth ocorre na página oficial do Google. O ReelFlow não coleta nem armazena sua senha. Após a autorização, o token é salvo localmente no computador em um arquivo chamado <code>youtube_token.json</code>, para evitar que você precise autorizar a cada abertura.</p><p>Arquivos de vídeo permanecem no computador do usuário até serem enviados pela API do YouTube. O ReelFlow não mantém uma cópia própria desses vídeos em um servidor.</p>
-      <h2>5. Compartilhamento com o Google</h2><p>Os vídeos e metadados são enviados diretamente ao YouTube por meio da YouTube Data API v3, conforme a conta e as ações autorizadas pelo usuário. O uso desses dados também está sujeito às <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidade do Google</a> e aos <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">Termos de Serviço do YouTube</a>.</p>
-      <h2>6. Retenção e exclusão</h2><p>Você pode revogar o acesso do ReelFlow nas configurações de segurança da sua Conta Google. Também pode remover o token local apagando o arquivo <code>youtube_token.json</code>. Para solicitar orientação ou exclusão de qualquer dado associado ao produto, entre em contato pelo endereço abaixo.</p>
-      <h2>7. Seus direitos</h2><p>Você pode solicitar informações sobre o uso dos dados, revogar a autorização, corrigir informações exibidas no aplicativo ou pedir esclarecimentos sobre este documento. O ReelFlow respeita as leis de proteção de dados aplicáveis ao relacionamento com seus usuários.</p>
-      <h2>8. Alterações nesta política</h2><p>Podemos atualizar esta política quando o produto, a API ou os requisitos legais mudarem. A data de atualização no topo desta página será alterada quando uma nova versão for publicada.</p>
-      <h2>9. Contato</h2><p>Para dúvidas sobre privacidade, dados do YouTube ou exclusão de dados, escreva para <a href="mailto:suporte@reelflow.app">suporte@reelflow.app</a>. Antes de enviar esta página ao Google, substitua esse endereço pelo e-mail real de suporte do responsável pelo ReelFlow.</p>
-    </article>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="ReelFlow, página inicial">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#9156eb"/><path d="M14.4 11.2V28.8L28.8 20Z" fill="#fff"/></svg>
+        REELFLOW
+      </a>
+      <nav class="nav-links" id="nav">
+        <a href="/#produto">Produto</a>
+        <a href="/#fluxo">Como funciona</a>
+        <a href="/#info">Informações</a>
+        <a href="/support/">Suporte</a>
+        <a href="/privacy/" aria-current="page">Privacidade</a>
+      </nav>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="doc-hero reveal">
+      <span class="eyebrow">Transparência primeiro</span>
+      <h1>Política de Privacidade</h1>
+      <p class="section-lead">Esta política explica como o ReelFlow acessa e trata dados quando você conecta sua conta do YouTube para organizar e agendar vídeos.</p>
+      <div class="doc-meta">
+        <span>Última atualização: 22/10/2026</span>
+        <span>Contato: lojapalaceshop.store@gmail.com</span>
+      </div>
+    </div>
+
+    <div class="doc">
+      <article class="block reveal">
+        <h2><span class="n">1.</span>Quem somos</h2>
+        <p>O ReelFlow é um programa para Windows que organiza filas de vídeos e os envia a um canal do YouTube pela <strong>YouTube Data API v3</strong>, a interface oficial do Google. Nesta política, “ReelFlow”, “nós” e “aplicativo” se referem ao programa e aos serviços associados a ele.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">2.</span>Dados que acessamos com a sua autorização</h2>
+        <p>Quando você autoriza o acesso pela tela oficial do Google, o ReelFlow pode usar apenas os dois escopos abaixo:</p>
+        <ul>
+          <li><strong>youtube.upload</strong>: enviar os vídeos que você escolheu ao seu canal, como privados e com a data de publicação definida por você.</li>
+          <li><strong>youtube.readonly</strong>: ler o nome e a imagem pública do seu canal, para exibi-los na interface.</li>
+        </ul>
+        <p>O ReelFlow não lista nem baixa seus vídeos existentes, comentários, inscrições ou dados de receita. Também não recebe sua senha do Google: o login acontece na página oficial do Google.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">3.</span>Dados guardados no seu computador</h2>
+        <p>O programa guarda alguns arquivos numa pasta oculta, <code>%LOCALAPPDATA%\ReelFlow</code>, dentro do seu usuário do Windows. Eles não são enviados a nenhum servidor nosso.</p>
+        <table>
+          <thead><tr><th>Arquivo</th><th>O que contém</th><th>Para que serve</th></tr></thead>
+          <tbody>
+            <tr><td><code>youtube_token.json</code></td><td>Token de autorização do YouTube</td><td>Evitar que você precise autorizar a cada abertura</td></tr>
+            <tr><td><code>videos_postados.json</code></td><td>Nome e tamanho do arquivo, ID do vídeo no YouTube, horário agendado e data do registro</td><td>Impedir que o mesmo vídeo seja enviado duas vezes</td></tr>
+            <tr><td><code>licenca.dat</code></td><td>Chave de licença, identificador de hardware (hash) e dados da licença</td><td>Manter o programa ativado</td></tr>
+          </tbody>
+        </table>
+        <p>Títulos, descrições, tags, horários e o caminho da pasta ficam só na memória enquanto o programa está aberto. A atividade exibida no log também não é salva em disco. A imagem do canal é baixada para exibição e mantida apenas na memória.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">4.</span>Dados enviados pela internet</h2>
+        <ul>
+          <li><strong>Ao Google/YouTube:</strong> os vídeos e os metadados (título, descrição, tags, horário) são enviados diretamente ao YouTube pela API, de acordo com as ações que você iniciou. Eles não passam por servidores do ReelFlow.</li>
+          <li><strong>Ao servidor de licenças do ReelFlow:</strong> ao ativar, e depois periodicamente enquanto o programa está aberto, o programa envia a chave de licença e um <strong>hash</strong> (um valor derivado, de sentido único) calculado a partir de identificadores do computador. O número de série original não é enviado.</li>
+          <li><strong>Imagem do canal:</strong> o programa carrega a imagem pública do canal a partir do endereço fornecido pelo Google.</li>
+        </ul>
+        <p>Este site não usa cookies de rastreamento, scripts de terceiros nem ferramentas de análise.</p>
+      </article>
+
+      <article class="block reveal highlight">
+        <h2><span class="n">5.</span>O que não fazemos</h2>
+        <ul>
+          <li>Não vendemos nem compartilhamos seus dados para fins comerciais.</li>
+          <li>Não usamos dados do YouTube para publicidade, perfis de marketing ou treinamento de modelos de IA.</li>
+          <li>Não coletamos sua senha do Google.</li>
+          <li>Não usamos automação de navegador: os envios passam pela API oficial.</li>
+        </ul>
+        <p><strong>Uso limitado:</strong> o uso e a transferência de informações recebidas das APIs do Google pelo ReelFlow seguem a <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Política de Dados do Usuário dos Serviços de API do Google</a>, incluindo os requisitos de Uso Limitado.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">6.</span>Retenção e exclusão</h2>
+        <p>Os arquivos da seção 3 permanecem no seu computador até você apagá-los. Os registros de licença no servidor são mantidos enquanto a licença estiver válida e podem ser excluídos a pedido, pelo e-mail de suporte.</p>
+        <p>Você pode apagar os dados locais removendo a pasta <code>%LOCALAPPDATA%\ReelFlow</code>. Para revogar o acesso ao seu canal, use <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">as permissões da sua Conta Google</a>.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">7.</span>Compartilhamento</h2>
+        <p>Os dados são compartilhados somente com o Google, quando você envia vídeos, e com a infraestrutura de hospedagem necessária para o site e para o servidor de licenças. Não os repassamos a terceiros para outros fins.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">8.</span>Segurança</h2>
+        <p>O login usa o fluxo OAuth do Google. O token fica no seu computador, dentro da pasta oculta do ReelFlow, e pode ser removido a qualquer momento. As comunicações com o site e com o servidor de licenças usam HTTPS.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">9.</span>Seus direitos</h2>
+        <p>Nos termos da Lei Geral de Proteção de Dados (LGPD), você pode pedir informações sobre o tratamento dos seus dados, corrigi-los, solicitar a exclusão dos registros que mantemos e revogar a autorização. Para isso, escreva para <a href="mailto:lojapalaceshop.store@gmail.com">lojapalaceshop.store@gmail.com</a>.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">10.</span>Alterações nesta política</h2>
+        <p>Podemos atualizar esta política quando o programa, a API do YouTube ou a legislação mudarem. A data no topo desta página mostra a versão em vigor.</p>
+      </article>
+
+      <article class="block reveal">
+        <h2><span class="n">11.</span>Contato</h2>
+        <p>Para dúvidas sobre privacidade ou sobre os dados do YouTube, escreva para <a href="mailto:lojapalaceshop.store@gmail.com">lojapalaceshop.store@gmail.com</a>.</p>
+      </article>
+    </div>
   </main>
-  <footer class="footer"><div class="container footer-inner"><div>© <span data-year></span> ReelFlow. Privacidade sem letra pequena.</div><div class="footer-links"><a href="/">Produto</a><a href="/support">Suporte</a><a href="mailto:suporte@reelflow.app">Contato</a></div></div></footer><script src="/site.js"></script>
+
+  <footer>
+    <div class="wrap">
+      <div>© ReelFlow. Privacidade sem letra pequena.</div>
+      <nav>
+        <a href="/">Produto</a>
+        <a href="/support/">Suporte</a>
+        <a href="mailto:lojapalaceshop.store@gmail.com">Contato</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="/site.js" defer></script>
 </body>
 </html>
