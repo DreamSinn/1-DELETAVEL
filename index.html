@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ReelFlow: organize, agende e envie seus Reels para o YouTube em uma fila tranquila e profissional.">
+  <meta name="theme-color" content="#0a0712">
+  <title>ReelFlow — YouTube Reels Scheduler</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><canvas id="particle-field"></canvas><span class="orb one"></span><span class="orb two"></span><span class="orb three"></span></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="/" aria-label="ReelFlow início"><span class="brand-mark" aria-hidden="true"></span><span>ReelFlow<small>creator control room</small></span></a>
+      <div class="nav-links">
+        <a class="active" href="/">Produto</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="/support">Suporte</a>
+        <a href="/privacy">Privacidade</a>
+      </div>
+      <div class="nav-actions"><a class="button small primary" href="#oauth">Preparar OAuth <span aria-hidden="true">↗</span></a><button class="mobile-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">YouTube Reels Scheduler</span>
+          <h1>Sua fila.<br><span class="gradient-text">No seu ritmo.</span></h1>
+          <p>ReelFlow transforma lotes de vídeos em uma rotina simples: conecte o canal, organize títulos e deixe cada publicação encontrar o horário certo.</p>
+          <div class="hero-actions"><a class="button primary" href="#como-funciona">Conhecer o fluxo <span aria-hidden="true">↓</span></a><a class="button ghost" href="/privacy">Ler a política <span aria-hidden="true">↗</span></a></div>
+          <div class="status-line"><span class="status-chip"><i></i> API oficial do YouTube</span><span>OAuth seguro • upload resumível • agenda privada</span></div>
+        </div>
+
+        <div class="console-wrap reveal" data-delay="2" aria-label="Prévia da interface do ReelFlow">
+          <div class="console-glow"></div>
+          <div class="console">
+            <div class="console-top"><div class="window-dots"><i></i><i></i><i></i></div><span>REELFLOW / QUEUE</span><span class="mock-ready"><i></i> PRONTO</span></div>
+            <div class="console-body">
+              <aside class="console-side"><div class="console-logo">◆ REELFLOW</div><div class="mock-nav"><div class="active">▣ FILA DE REELS</div><div>◉ CONTA YOUTUBE</div><div>⚙ CONFIGURAÇÕES</div><div>☷ LOG</div></div></aside>
+              <div class="console-main"><div class="mock-header"><div><strong>Fila de Reels</strong><span>3 vídeos aguardando publicação</span></div><span class="mock-ready"><i></i> CONECTADO</span></div><div class="mock-path">/conteudo/reels/outubro/webm</div>
+                <div class="mock-list"><div class="mock-row"><b>AGENDADO</b><span class="mock-file">making-of-produto.webm</span><span class="mock-date">18:30 hoje</span></div><div class="mock-row"><b class="pending">ENVIANDO</b><span class="mock-file">bastidores-campanha.mp4</span><span class="equalizer" aria-label="Enviando"><i></i><i></i><i></i><i></i></span></div><div class="mock-row"><b>AGUARDANDO</b><span class="mock-file">dica-rapida-03.mkv</span><span class="mock-date">amanhã</span></div></div>
+                <div class="mock-bottom"><div class="mock-avatar"><span class="avatar">RF</span><span>Canal conectado</span></div><span class="mock-btn">▶ INICIAR FILA</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact container" id="produto">
+      <div class="section-head reveal"><div><span class="section-label">Tudo no lugar</span><h2>Um painel pequeno para uma rotina grande.</h2></div><p>Feito para quem produz em lote e quer mais previsibilidade — sem planilhas espalhadas e sem automação frágil de navegador.</p></div>
+      <div class="bento">
+        <article class="card tall reveal"><span class="icon-box">▣</span><span class="card-stat">01 / QUEUE</span><h3>Uma fila que entende seu fluxo.</h3><p>Escolha uma pasta, encontre seus vídeos em subpastas, edite títulos e defina a data de cada publicação em um só lugar.</p></article>
+        <article class="card reveal" data-delay="1"><span class="icon-box">◉</span><h3>Conta do canal</h3><p>OAuth oficial do Google, token local e um avatar para mostrar qual canal está conectado.</p></article>
+        <article class="card reveal" data-delay="2"><span class="icon-box">◌</span><h3>Formato sem drama</h3><p>MP4, WebM, MKV, MOV e outros formatos comuns entram na mesma fila.</p></article>
+        <article class="card reveal" data-delay="1"><span class="icon-box">◷</span><h3>Agenda clara</h3><p>Envie como privado e programe a publicação para o horário que você definiu.</p></article>
+        <article class="card reveal" data-delay="2"><span class="icon-box">≡</span><h3>Log em tempo real</h3><p>Autenticação, leitura da pasta e progresso ficam visíveis sem esconder o estado da operação.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="container workflow"><div class="workflow-copy reveal"><span class="section-label">Como funciona</span><h2>Do arquivo ao horário certo.</h2><p>O ReelFlow não publica nada sem a autorização do dono da conta. Você escolhe o canal, prepara a fila e acompanha o processo.</p><a class="button small" href="/support">Ver o passo a passo <span aria-hidden="true">→</span></a></div>
+        <div class="steps"><article class="step reveal"><span class="step-num">01</span><div><h3>Conecte o YouTube</h3><p>Uma janela oficial do Google pede a autorização. Sua senha nunca passa pelo ReelFlow.</p></div></article><article class="step reveal" data-delay="1"><span class="step-num">02</span><div><h3>Escolha a pasta</h3><p>A fila encontra arquivos de vídeo e permite ajustar título, descrição, tags e horário.</p></div></article><article class="step reveal" data-delay="2"><span class="step-num">03</span><div><h3>Inicie o lote</h3><p>Uploads sequenciais e resumíveis mostram o progresso até o vídeo ficar agendado ou privado.</p></div></article></div>
+      </div>
+    </section>
+
+    <section class="section compact container" id="oauth">
+      <div class="oauth-band reveal"><div class="oauth-grid"><div><span class="section-label">Configuração do aplicativo</span><h2>OAuth pronto para uma experiência transparente.</h2><p>Use estas informações na configuração do Google Auth Platform. Substitua o e-mail e o domínio pelos seus valores reais antes de publicar.</p><div class="hero-actions"><a class="button primary small" href="/support#oauth">Abrir guia de configuração <span aria-hidden="true">↗</span></a></div></div><div class="scope-list"><div class="scope">Nome do app: ReelFlow</div><div class="scope">E-mail de suporte: suporte@reelflow.app</div><div class="scope">Página inicial: seu domínio publicado</div><div class="scope">Política: /privacy</div><div class="scope">Escopos: youtube.upload + youtube.readonly</div></div></div></div>
+    </section>
+
+    <section class="section compact container"><div class="note-grid"><div class="note reveal"><strong>Sem senha no app</strong><span>O login acontece em accounts.google.com, na janela oficial do Google.</span></div><div class="note reveal" data-delay="1"><strong>Seu token, local</strong><span>O token OAuth fica no computador do usuário e pode ser removido a qualquer momento.</span></div><div class="note reveal" data-delay="2"><strong>Cliente no controle</strong><span>O usuário decide quais vídeos entram na fila e quando o lote começa.</span></div></div></section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><div>© <span data-year></span> ReelFlow. Feito para publicar com intenção.</div><div class="footer-links"><a href="/privacy">Privacidade</a><a href="/support">Suporte</a><a href="mailto:suporte@reelflow.app">Contato</a></div></div></footer>
+  <script src="/site.js"></script>
+</body>
+</html>
